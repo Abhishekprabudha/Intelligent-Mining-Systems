@@ -46,6 +46,21 @@ const pct = v => `${Math.round(v)}%`;
 const money = v => moneyFmt.format(v || 0);
 const compactMoney = v => `$${((v || 0)/1000000).toFixed(v >= 1000000 ? 1 : 2)}M`;
 const num = v => fmt.format(Math.round(v || 0));
+const LIVE_REFRESH_MS = 5000;
+
+function liveWave(seed = 0, amplitude = 1, speed = 1) {
+  return Math.sin((state.liveTick + seed) * speed) * amplitude;
+}
+
+function liveJitter(seed = 0, amplitude = 1) {
+  const x = Math.sin((state.liveTick + 1) * (seed + 12.9898)) * 43758.5453;
+  return (x - Math.floor(x) - 0.5) * amplitude * 2;
+}
+
+function liveSeries(base, amplitude = 1, seed = 0, decimals = 0) {
+  const factor = 10 ** decimals;
+  return base.map((v, i) => Math.round((v + liveWave(seed + i * 0.7, amplitude, 0.85) + liveJitter(seed + i, amplitude * 0.35)) * factor) / factor);
+}
 
 async function loadData() {
   const pairs = await Promise.all(DATA_FILES.map(async file => {
@@ -76,24 +91,24 @@ function currentKpis() {
   const orePlan = state.data.mine_plan;
   const assetAvailability = Math.round(mergedAssets().reduce((s,a)=>s+a.healthScore,0) / mergedAssets().length);
   const qualityBoost = approved && scenario.after?.pelletQualityScore ? scenario.after.pelletQualityScore - scenario.before.pelletQualityScore : 0;
-  const planAttainment = approved && scenario.after?.planAttainmentPct ? scenario.after.planAttainmentPct : 92 + (state.liveTick % 3);
-  const offSpecRisk = approved && scenario.after?.offSpecRiskPct ? scenario.after.offSpecRiskPct : lab.offSpecRiskPct;
+  const planAttainment = approved && scenario.after?.planAttainmentPct ? scenario.after.planAttainmentPct + liveWave(2, 0.4, 0.7) : 93 + liveWave(1, 2.2, 0.9) + liveJitter(2, 0.7);
+  const offSpecRisk = Math.max(3, approved && scenario.after?.offSpecRiskPct ? scenario.after.offSpecRiskPct + liveJitter(3, 0.8) : lab.offSpecRiskPct + liveWave(3, 2.1, 0.8) + liveJitter(4, 0.9));
   const prodRisk = productionRisk({ planAttainmentPct: planAttainment, offSpecRiskPct: offSpecRisk, assetAvailabilityPct: assetAvailability });
   const safetyScore = safetyRisk(state.data.safety_events, state.data.emissions_water_dust, state.data.energy_weather_market.weather);
   const logisticsRisk = logisticsDelayRisk(state.data.logistics_shipments);
   const varUsd = approved ? Math.max(340000, valueAtRisk(recs) - valueProtectedAfterAction(scenario)) : valueAtRisk(recs);
   const protectedUsd = 680000 + [...state.approvedScenarios].length * 420000;
   return {
-    pelletProduction: approved ? 18420 : 17650 + (state.liveTick % 4) * 55,
+    pelletProduction: approved ? 18420 + liveJitter(5, 75) : 17780 + liveWave(5, 260, 0.85) + liveJitter(6, 95),
     pelletPlan: state.data.site_profile.baselineDailyPelletPlanTons,
-    oreMovement: orePlan.oreMovementActualTons + (state.liveTick % 5) * 160,
+    oreMovement: orePlan.oreMovementActualTons + liveWave(7, 820, 0.75) + liveJitter(8, 220),
     orePlan: orePlan.oreMovementPlanTons,
-    qualityScore: Math.min(98, qScore + qualityBoost),
-    feGrade: lab.feGradePct,
-    silica: lab.silicaPct,
-    costPerTon: approved ? 53.9 : 56.4,
-    energyPerTon: approved && scenario.after?.energyPerTonKwh ? scenario.after.energyPerTonKwh : state.data.energy_weather_market.energyPerTonKwh,
-    carbonIntensity: approved && scenario.after?.carbonIntensityKgCO2ePerT ? scenario.after.carbonIntensityKgCO2ePerT : state.data.emissions_water_dust.carbonIntensityKgCO2ePerT,
+    qualityScore: Math.min(98, Math.max(82, qScore + qualityBoost + liveWave(9, 1.4, 0.8) + liveJitter(10, 0.5))),
+    feGrade: lab.feGradePct + liveJitter(11, 0.04),
+    silica: Math.max(2.8, lab.silicaPct + liveWave(12, 0.08, 1.1) + liveJitter(13, 0.03)),
+    costPerTon: (approved ? 53.9 : 56.4) + liveWave(14, 0.45, 0.7) + liveJitter(15, 0.18),
+    energyPerTon: (approved && scenario.after?.energyPerTonKwh ? scenario.after.energyPerTonKwh : state.data.energy_weather_market.energyPerTonKwh) + liveWave(16, 1.1, 0.8) + liveJitter(17, 0.35),
+    carbonIntensity: (approved && scenario.after?.carbonIntensityKgCO2ePerT ? scenario.after.carbonIntensityKgCO2ePerT : state.data.emissions_water_dust.carbonIntensityKgCO2ePerT) + liveWave(18, 0.75, 0.7) + liveJitter(19, 0.22),
     assetAvailability,
     safetyScore,
     openRecommendations: recs.filter(r => r.status !== 'approved').length,
@@ -111,7 +126,7 @@ function statusBadge(label, tone='blue') {
 
 function kpiCard({ label, value, unit='', delta='', tone='blue', status='live' }) {
   const deltaClass = tone === 'green' ? 'good' : tone === 'red' ? 'bad' : tone === 'amber' ? 'warn' : '';
-  return `<div class="kpi-card">
+  return `<div class="kpi-card live-refresh" data-live-tick="${state.liveTick}">
     <div class="kpi-top"><div class="kpi-label">${label}</div>${statusBadge(status, tone)}</div>
     <div class="kpi-value">${value}${unit ? `<small> ${unit}</small>` : ''}</div>
     <div class="delta ${deltaClass}">${delta || 'AI monitored • no manual refresh'}</div>
@@ -161,6 +176,7 @@ function topbar() {
     <div class="top-actions">
       <span class="meta-pill">System: <b>Nominal / AI Watch</b></span>
       <span class="meta-pill">Alerts: <b>${k.openRecommendations + state.data.safety_events.filter(e=>e.status!=='closed').length}</b></span>
+      <span class="meta-pill">Refresh: <b>${LIVE_REFRESH_MS / 1000}s</b></span>
       <select class="select-pill" data-scenario-select>
         ${state.data.scenarios.map(s => `<option value="${s.id}" ${s.id===state.selectedScenario?'selected':''}>Run Scenario: ${s.name}</option>`).join('')}
       </select>
@@ -196,11 +212,11 @@ function executiveScreen() {
       <div class="panel">
         <div class="panel-title"><h2>Operating Pulse: production, quality, cost, availability, energy</h2><span>12-hour synthetic signal</span></div>
         <div class="chart-row">
-          ${trendChart('Production vs plan', [88,90,91,92,92,93,92,93,94,92,93,96], '%')}
-          ${trendChart('Pellet quality', [93,94,94,93,92,91,90,89,87,88,90,k.qualityScore], '')}
-          ${trendChart('Cost per ton', [54,54,55,55,56,56,57,57,56,56,55,Math.round(k.costPerTon)], '$')}
-          ${trendChart('Availability', [94,93,92,91,89,88,87,86,84,86,88,k.assetAvailability], '%')}
-          ${trendChart('Energy intensity', [89,90,90,91,92,92,93,92,92,91,91,Math.round(k.energyPerTon)], '')}
+          ${trendChart('Production vs plan', liveSeries([88,90,91,92,92,93,92,93,94,92,93,Math.round(k.pelletProduction/k.pelletPlan*100)], 1.4, 20), '%')}
+          ${trendChart('Pellet quality', liveSeries([93,94,94,93,92,91,90,89,87,88,90,Math.round(k.qualityScore)], 1.2, 30), '')}
+          ${trendChart('Cost per ton', liveSeries([54,54,55,55,56,56,57,57,56,56,55,Math.round(k.costPerTon)], 0.7, 40), '$')}
+          ${trendChart('Availability', liveSeries([94,93,92,91,89,88,87,86,84,86,88,k.assetAvailability], 1.0, 50), '%')}
+          ${trendChart('Energy intensity', liveSeries([89,90,90,91,92,92,93,92,92,91,91,Math.round(k.energyPerTon)], 0.9, 60), '')}
         </div>
       </div>
       <div class="panel ai-summary">
@@ -313,8 +329,8 @@ function pelletScreen() {
       <div class="process-flow">${state.data.pellet_plant_sensors.map(stageCard).join('')}</div>
     </div>
     <div class="grid quality-kpis" style="margin-top:16px">
-      ${kpiCard({label:'Fe grade', value:lab.feGradePct.toFixed(2), unit:'%', delta:'Stable high-grade concentrate', tone:'green', status:'lab'})}
-      ${kpiCard({label:'Silica', value:lab.silicaPct.toFixed(2), unit:'%', delta:'N-14 drift detected', tone:'red', status:'watch'})}
+      ${kpiCard({label:'Fe grade', value:k.feGrade.toFixed(2), unit:'%', delta:'Stable high-grade concentrate', tone:'green', status:'lab'})}
+      ${kpiCard({label:'Silica', value:k.silica.toFixed(2), unit:'%', delta:'N-14 drift detected', tone:'red', status:'watch'})}
       ${kpiCard({label:'Phosphorus', value:lab.phosphorusPct.toFixed(3), unit:'%', delta:'within DR control band', tone:'green', status:'lab'})}
       ${kpiCard({label:'Moisture', value:lab.moisturePct.toFixed(1), unit:'%', delta:'balling correction ready', tone:'amber', status:'process'})}
       ${kpiCard({label:'Green ball size in spec', value:lab.greenBallSizeInSpecPct.toFixed(1), unit:'%', delta:'disc speed can recover 3%', tone:'amber', status:'balling'})}
@@ -339,9 +355,10 @@ function pelletScreen() {
     </div>`;
 }
 
-function stageCard(s) {
+function stageCard(s, index = 0) {
   const tone = s.healthStatus === 'healthy' ? 'green' : s.bottleneckStatus === 'constraint' ? 'amber' : 'blue';
-  return `<div class="stage"><h4>${s.stage}</h4>${statusBadge(s.healthStatus, tone)}<div class="throughput">${s.throughputTph}<small> tph</small></div><div class="stage-meta"><span>Bottleneck: ${s.bottleneckStatus}</span><span>Quality impact: ${s.qualityImpact}</span><span>Energy impact: ${s.energyImpact}</span><span>${s.activeAlerts.length ? s.activeAlerts[0] : 'No active alert'}</span></div></div>`;
+  const liveThroughput = Math.max(0, Math.round(s.throughputTph + liveWave(index + 70, 18, 0.8) + liveJitter(index + 80, 8)));
+  return `<div class="stage live-refresh" data-live-tick="${state.liveTick}"><h4>${s.stage}</h4>${statusBadge(s.healthStatus, tone)}<div class="throughput">${liveThroughput}<small> tph</small></div><div class="stage-meta"><span>Bottleneck: ${s.bottleneckStatus}</span><span>Quality impact: ${s.qualityImpact}</span><span>Energy impact: ${s.energyImpact}</span><span>${s.activeAlerts.length ? s.activeAlerts[0] : 'No active alert'}</span></div></div>`;
 }
 
 function beforeAfterImpact(scenario) {
@@ -382,11 +399,13 @@ function reliabilityScreen() {
 }
 
 function assetCard(a) {
-  const tone = classifyRisk(a.failureRisk);
-  return `<div class="asset-card">
-    <div class="panel-title"><h3>${a.assetId}</h3>${statusBadge(`${a.failureRisk}% risk`, tone)}</div>
+  const liveRisk = Math.max(1, Math.min(99, Math.round(a.failureRisk + liveWave(a.healthScore, 2.8, 0.7) + liveJitter(a.failureRisk, 1.2))));
+  const liveHealth = Math.max(1, Math.min(100, Math.round(a.healthScore - (liveRisk - a.failureRisk) * 0.35 + liveJitter(a.healthScore, 0.8))));
+  const tone = classifyRisk(liveRisk);
+  return `<div class="asset-card live-refresh" data-live-tick="${state.liveTick}">
+    <div class="panel-title"><h3>${a.assetId}</h3>${statusBadge(`${liveRisk}% risk`, tone)}</div>
     <div class="asset-meta">${a.assetType} • ${a.location}</div>
-    <div class="health-ring"><div class="ring" style="--pct:${a.healthScore}%"><b>${a.healthScore}</b></div><div><b>Health score</b><div class="mini">TTF: ${a.failureRisk>65?'18 hrs':a.failureRisk>45?'4 days':'14+ days'}</div></div></div>
+    <div class="health-ring"><div class="ring" style="--pct:${liveHealth}%"><b>${liveHealth}</b></div><div><b>Health score</b><div class="mini">TTF: ${liveRisk>65?'18 hrs':liveRisk>45?'4 days':'14+ days'}</div></div></div>
     <div class="asset-signals"><div class="signal"><span>Vibration</span><b>${a.vibrationAnomaly}</b></div><div class="signal"><span>Temperature</span><b>${a.temperatureC}°C</b></div><div class="signal"><span>Current</span><b>${pct(a.currentDrawAnomaly*100)}</b></div><div class="signal"><span>Runtime</span><b>${num(a.runtimeHours)}h</b></div></div>
     <div class="explain">Action: ${a.recommendedAction}. Failed impact: ${a.productionImpactTph} tph.</div>
   </div>`;
@@ -399,14 +418,15 @@ function workOrderTable() {
 function energyScreen() {
   const energy = state.data.energy_weather_market;
   const esg = state.data.emissions_water_dust;
+  const k = currentKpis();
   const eOpp = energyOptimizationOpportunity(energy);
   const erisk = esgRisk(esg, energy.weather);
   const srisk = safetyRisk(state.data.safety_events, esg, energy.weather);
   return `${screenHead('Energy, ESG & Safety Cockpit', 'Sustainability decisions are now operational, not monthly reporting', 'Energy, carbon, dust, water, weather, safety observations, permits, and reclamation progress are interpreted by agents as shift-level actions.', 'Composite ESG risk', erisk)}
     <div class="grid kpi-grid">
-      ${kpiCard({label:'Energy per ton', value:energy.energyPerTonKwh.toFixed(1), unit:'kWh/t', delta:`${money(eOpp.savingsUsd)} savings available`, tone:'amber', status:'energy'})}
-      ${kpiCard({label:'Peak power demand', value:energy.powerDemandMW.toFixed(1), unit:'MW', delta:`Peak tariff ${energy.peakTariffWindow}`, tone:'amber', status:'peak'})}
-      ${kpiCard({label:'Carbon intensity', value:esg.carbonIntensityKgCO2ePerT.toFixed(1), unit:'kg/t', delta:'3.4% improvement recommended', tone:'blue', status:'carbon'})}
+      ${kpiCard({label:'Energy per ton', value:k.energyPerTon.toFixed(1), unit:'kWh/t', delta:`${money(eOpp.savingsUsd)} savings available`, tone:'amber', status:'energy'})}
+      ${kpiCard({label:'Peak power demand', value:(energy.powerDemandMW + liveWave(90, 1.8, 0.75) + liveJitter(91, 0.6)).toFixed(1), unit:'MW', delta:`Peak tariff ${energy.peakTariffWindow}`, tone:'amber', status:'peak'})}
+      ${kpiCard({label:'Carbon intensity', value:k.carbonIntensity.toFixed(1), unit:'kg/t', delta:'3.4% improvement recommended', tone:'blue', status:'carbon'})}
       ${kpiCard({label:'Water usage', value:esg.waterUsageM3PerT.toFixed(2), unit:'m³/t', delta:'within operating range', tone:'green', status:'water'})}
       ${kpiCard({label:'Dust index', value:esg.dustIndex, delta:`limit ${esg.dustLimit}`, tone:esg.dustIndex>70?'amber':'green', status:'dust'})}
       ${kpiCard({label:'Safety risk score', value:srisk, delta:'high wind + open observations', tone:srisk>60?'amber':'green', status:'safety'})}
@@ -431,7 +451,7 @@ function zoneTable() {
 
 function logisticsScreen() {
   const risk = logisticsDelayRisk(state.data.logistics_shipments);
-  const inventory = state.data.logistics_shipments.reduce((s,x)=>s+x.inventoryTons,0);
+  const inventory = state.data.logistics_shipments.reduce((s,x)=>s+x.inventoryTons,0) + liveWave(100, 420, 0.7) + liveJitter(101, 130);
   return `${screenHead('Logistics & Supply Chain Control', 'Quality-matched pellets move to the right customer before demurrage appears', 'Finished pellet inventory, railcar availability, customer contract requirements, shipment risk, and loadout sequencing are optimized by a logistics agent.', 'Dispatch delay risk', risk)}
     <div class="grid kpi-grid">
       ${kpiCard({label:'Finished pellet inventory', value:num(inventory), unit:'t', delta:'segmented by quality stockpile', tone:'green', status:'stock'})}
@@ -602,7 +622,7 @@ window.addEventListener('hashchange', () => {
 
 loadData().then(() => {
   render();
-  setInterval(() => { state.liveTick += 1; render(); }, 5000);
+  setInterval(() => { state.liveTick += 1; render(); }, LIVE_REFRESH_MS);
 }).catch(err => {
   $('#app').innerHTML = `<div class="boot-screen"><div class="boot-logo">AIonOS</div><h1>Data load failed</h1><p>${err.message}</p></div>`;
 });
