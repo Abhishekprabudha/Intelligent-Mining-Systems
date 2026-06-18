@@ -1,0 +1,20 @@
+{
+  "name": "aionos-mesabi-intelligent-mine-decision-system",
+  "version": "1.0.0",
+  "description": "Front-end-only GitHub Pages demo for AIonOS Mesabi Intelligent Mine Decision System",
+  "type": "module",
+  "scripts": {
+    "start": "npx http-server . -p 5173 -c-1",
+    "serve": "python3 -m http.server 5173",
+    "check:data": "node scripts/check-data.mjs"
+  },
+  "keywords": [
+    "AIonOS",
+    "mining",
+    "pellet plant",
+    "mission control",
+    "github-pages"
+  ],
+  "license": "UNLICENSED",
+  "devDependencies": {}
+}
