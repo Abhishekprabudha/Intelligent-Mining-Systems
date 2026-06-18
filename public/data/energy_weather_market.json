@@ -1,0 +1,34 @@
+{
+  "timestamp": "2026-06-18T13:30:00-05:00",
+  "powerDemandMW": 82.4,
+  "peakTariffWindow": "14:00-16:00",
+  "energyPerTonKwh": 91.8,
+  "gridCarbonKgCO2PerMwh": 383,
+  "weather": {
+    "temperatureC": 23,
+    "windSpeedMph": 25,
+    "gustMph": 36,
+    "humidityPct": 58,
+    "precipProbabilityPct": 22,
+    "condition": "gusty winds over stockpile yard"
+  },
+  "market": {
+    "powerPriceUsdMwh": 116,
+    "pelletReferencePriceUsdT": 168,
+    "dieselUsdGal": 3.72
+  },
+  "optimizationWindows": [
+    {
+      "window": "14:00-14:45",
+      "action": "shift non-critical grinding load",
+      "savingsUsd": 42000,
+      "productionImpact": "none"
+    },
+    {
+      "window": "15:15-16:00",
+      "action": "coordinate CV-204 inspection with feed transition",
+      "savingsUsd": 0,
+      "productionImpact": "protects 610 tph"
+    }
+  ]
+}

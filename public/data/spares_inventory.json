@@ -1,0 +1,47 @@
+[
+  {
+    "sku": "BRG-CV204-XL",
+    "description": "CV-204 bearing kit",
+    "onHand": 2,
+    "minStock": 1,
+    "leadTimeDays": 19,
+    "criticality": "A",
+    "recommendedAction": "reserve for active work order"
+  },
+  {
+    "sku": "FAN-IF07-SEAL",
+    "description": "IF-07 seal kit",
+    "onHand": 1,
+    "minStock": 1,
+    "leadTimeDays": 33,
+    "criticality": "A",
+    "recommendedAction": "monitor stock"
+  },
+  {
+    "sku": "LINER-GM02",
+    "description": "Grinding mill liner set",
+    "onHand": 4,
+    "minStock": 1,
+    "leadTimeDays": 27,
+    "criticality": "B",
+    "recommendedAction": "monitor stock"
+  },
+  {
+    "sku": "PUMP-PM112-IMP",
+    "description": "Pump impeller",
+    "onHand": 3,
+    "minStock": 1,
+    "leadTimeDays": 18,
+    "criticality": "B",
+    "recommendedAction": "monitor stock"
+  },
+  {
+    "sku": "DISC-BD03-PLATE",
+    "description": "Balling disc wear plate",
+    "onHand": 6,
+    "minStock": 1,
+    "leadTimeDays": 10,
+    "criticality": "B",
+    "recommendedAction": "monitor stock"
+  }
+]

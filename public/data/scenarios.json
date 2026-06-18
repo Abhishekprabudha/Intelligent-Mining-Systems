@@ -1,0 +1,196 @@
+[
+  {
+    "id": "silica_spike",
+    "name": "Silica Spike in Ore Feed",
+    "trigger": "N-14 silica rises and current blend exceeds DR-grade tolerance.",
+    "before": {
+      "pelletQualityScore": 87,
+      "offSpecRiskPct": 31,
+      "planAttainmentPct": 92,
+      "valueAtRiskUsd": 1800000,
+      "energyPerTonKwh": 91.8
+    },
+    "recommendation": [
+      "Reduce N-14 feed to 22%",
+      "Blend E-07 ore into concentrate stream",
+      "Adjust balling moisture setpoint",
+      "Tune furnace Zone 3 temperature"
+    ],
+    "after": {
+      "pelletQualityScore": 94,
+      "offSpecRiskPct": 7,
+      "planAttainmentPct": 96,
+      "valueProtectedUsd": 1500000,
+      "energyPerTonKwh": 90.5
+    },
+    "agent": "Pellet Quality Optimizer Agent"
+  },
+  {
+    "id": "conveyor_bearing",
+    "name": "Conveyor Bearing Failure Risk",
+    "trigger": "CV-204 vibration and bearing temperature cross risk threshold.",
+    "before": {
+      "assetAvailabilityPct": 84,
+      "failureRiskPct": 72,
+      "planAttainmentPct": 91,
+      "valueAtRiskUsd": 920000
+    },
+    "recommendation": [
+      "Create 45-minute maintenance window",
+      "Reserve bearing kit",
+      "Reduce surge loading",
+      "Inspect alignment"
+    ],
+    "after": {
+      "assetAvailabilityPct": 91,
+      "failureRiskPct": 19,
+      "planAttainmentPct": 95,
+      "valueProtectedUsd": 760000
+    },
+    "agent": "Crusher & Conveyor Health Agent"
+  },
+  {
+    "id": "winter_weather",
+    "name": "Winter Weather Disruption",
+    "trigger": "Freezing rain and wind reduce haul speed and stockpile handling rate.",
+    "before": {
+      "oreMovementPct": 83,
+      "loadoutDelayHours": 12,
+      "safetyRiskScore": 67,
+      "valueAtRiskUsd": 640000
+    },
+    "recommendation": [
+      "Activate winter haul plan",
+      "Prioritize covered conveyors",
+      "Stage dozer and grader crews",
+      "Shift loadout to protected window"
+    ],
+    "after": {
+      "oreMovementPct": 91,
+      "loadoutDelayHours": 4,
+      "safetyRiskScore": 41,
+      "valueProtectedUsd": 510000
+    },
+    "agent": "Weather Risk Agent"
+  },
+  {
+    "id": "compression_drop",
+    "name": "Pellet Compression Strength Drop",
+    "trigger": "Moisture variation and furnace temperature dip reduce pellet strength.",
+    "before": {
+      "compressionStrengthKg": 282,
+      "offSpecRiskPct": 28,
+      "qualityScore": 88,
+      "valueAtRiskUsd": 1100000
+    },
+    "recommendation": [
+      "Increase binder 0.04%",
+      "Stabilize balling disc speed",
+      "Raise Zone 3 temperature 12\u00b0C",
+      "Hold borderline lot for retest"
+    ],
+    "after": {
+      "compressionStrengthKg": 312,
+      "offSpecRiskPct": 8,
+      "qualityScore": 95,
+      "valueProtectedUsd": 890000
+    },
+    "agent": "Pellet Quality Optimizer Agent"
+  },
+  {
+    "id": "power_price",
+    "name": "Power Price Spike",
+    "trigger": "Real-time power price doubles during peak tariff window.",
+    "before": {
+      "energyPerTonKwh": 93,
+      "costPerTonUsd": 56.8,
+      "carbonIntensityKgCO2ePerT": 39.1,
+      "valueAtRiskUsd": 260000
+    },
+    "recommendation": [
+      "Shift non-critical grinding load",
+      "Flatten mill demand curve",
+      "Maintain furnace thermal stability",
+      "Use optimized pump schedule"
+    ],
+    "after": {
+      "energyPerTonKwh": 89.5,
+      "costPerTonUsd": 54.9,
+      "carbonIntensityKgCO2ePerT": 37.1,
+      "valueProtectedUsd": 210000
+    },
+    "agent": "Energy & Carbon Agent"
+  },
+  {
+    "id": "rail_delay",
+    "name": "Rail Loadout Delay",
+    "trigger": "Railcars delayed by 9 hours while Customer A order is due tonight.",
+    "before": {
+      "onTimeDispatchPct": 71,
+      "demurrageRiskUsd": 145000,
+      "finishedInventoryTons": 128000,
+      "valueAtRiskUsd": 380000
+    },
+    "recommendation": [
+      "Resequence P2 loadout",
+      "Reallocate 28 railcars",
+      "Split lower priority shipment",
+      "Lock quality certificate"
+    ],
+    "after": {
+      "onTimeDispatchPct": 93,
+      "demurrageRiskUsd": 26000,
+      "finishedInventoryTons": 121000,
+      "valueProtectedUsd": 310000
+    },
+    "agent": "Logistics Agent"
+  },
+  {
+    "id": "dust_alert",
+    "name": "Dust Compliance Alert",
+    "trigger": "Wind gusts drive Zone S-3 dust index close to permit threshold.",
+    "before": {
+      "dustIndex": 78,
+      "safetyRiskScore": 62,
+      "permitRisk": "watch",
+      "valueAtRiskUsd": 150000
+    },
+    "recommendation": [
+      "Activate water suppression",
+      "Restrict stockpile vehicle movement",
+      "Add mobile fogging unit",
+      "Notify EHS supervisor"
+    ],
+    "after": {
+      "dustIndex": 59,
+      "safetyRiskScore": 38,
+      "permitRisk": "normal",
+      "valueProtectedUsd": 120000
+    },
+    "agent": "Safety & Compliance Agent"
+  },
+  {
+    "id": "ramp_shortfall",
+    "name": "Startup Ramp-Up Shortfall",
+    "trigger": "Pellet plant line is under nameplate ramp curve after maintenance restart.",
+    "before": {
+      "productionAttainmentPct": 88,
+      "bottleneck": "Balling Disc BD-03",
+      "valueAtRiskUsd": 720000,
+      "qualityScore": 90
+    },
+    "recommendation": [
+      "Tune balling disc setpoint",
+      "Increase operator rounds",
+      "Stabilize concentrate feed",
+      "Stage reliability crew"
+    ],
+    "after": {
+      "productionAttainmentPct": 95,
+      "bottleneck": "Induration thermal limit",
+      "valueProtectedUsd": 580000,
+      "qualityScore": 94
+    },
+    "agent": "COO Copilot"
+  }
+]

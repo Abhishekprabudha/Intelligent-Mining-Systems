@@ -1,0 +1,106 @@
+[
+  {
+    "stage": "Mine Feed",
+    "throughputTph": 733.0,
+    "healthStatus": "healthy",
+    "bottleneckStatus": "clear",
+    "qualityImpact": "medium",
+    "energyImpact": "medium",
+    "activeAlerts": [],
+    "targetTph": 850
+  },
+  {
+    "stage": "Primary Crusher",
+    "throughputTph": 781.0,
+    "healthStatus": "healthy",
+    "bottleneckStatus": "clear",
+    "qualityImpact": "medium",
+    "energyImpact": "medium",
+    "activeAlerts": [],
+    "targetTph": 850
+  },
+  {
+    "stage": "Grinding",
+    "throughputTph": 792.0,
+    "healthStatus": "watch",
+    "bottleneckStatus": "clear",
+    "qualityImpact": "medium",
+    "energyImpact": "high",
+    "activeAlerts": [],
+    "targetTph": 850
+  },
+  {
+    "stage": "Concentrate",
+    "throughputTph": 873.0,
+    "healthStatus": "healthy",
+    "bottleneckStatus": "clear",
+    "qualityImpact": "high",
+    "energyImpact": "medium",
+    "activeAlerts": [],
+    "targetTph": 850
+  },
+  {
+    "stage": "Balling Disc",
+    "throughputTph": 875.0,
+    "healthStatus": "watch",
+    "bottleneckStatus": "constraint",
+    "qualityImpact": "high",
+    "energyImpact": "medium",
+    "activeAlerts": [
+      "moisture/silica drift affecting strength"
+    ],
+    "targetTph": 850
+  },
+  {
+    "stage": "Induration Furnace",
+    "throughputTph": 892.0,
+    "healthStatus": "watch",
+    "bottleneckStatus": "constraint",
+    "qualityImpact": "high",
+    "energyImpact": "high",
+    "activeAlerts": [
+      "moisture/silica drift affecting strength"
+    ],
+    "targetTph": 850
+  },
+  {
+    "stage": "Cooling",
+    "throughputTph": 849.0,
+    "healthStatus": "watch",
+    "bottleneckStatus": "clear",
+    "qualityImpact": "medium",
+    "energyImpact": "medium",
+    "activeAlerts": [],
+    "targetTph": 850
+  },
+  {
+    "stage": "Screening",
+    "throughputTph": 877.0,
+    "healthStatus": "healthy",
+    "bottleneckStatus": "clear",
+    "qualityImpact": "medium",
+    "energyImpact": "medium",
+    "activeAlerts": [],
+    "targetTph": 850
+  },
+  {
+    "stage": "Finished DR Pellets",
+    "throughputTph": 831.0,
+    "healthStatus": "healthy",
+    "bottleneckStatus": "clear",
+    "qualityImpact": "medium",
+    "energyImpact": "medium",
+    "activeAlerts": [],
+    "targetTph": 850
+  },
+  {
+    "stage": "Rail Loadout",
+    "throughputTph": 759.0,
+    "healthStatus": "healthy",
+    "bottleneckStatus": "clear",
+    "qualityImpact": "medium",
+    "energyImpact": "medium",
+    "activeAlerts": [],
+    "targetTph": 850
+  }
+]

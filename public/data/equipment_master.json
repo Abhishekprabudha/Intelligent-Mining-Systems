@@ -1,0 +1,110 @@
+[
+  {
+    "assetId": "SH-101",
+    "assetType": "Electric shovel",
+    "location": "Pit N-14",
+    "criticality": "A",
+    "oem": "Synthetic Industrial OEM",
+    "commissioned": "2025-11-01",
+    "maintenanceStrategy": "condition-based"
+  },
+  {
+    "assetId": "DR-204",
+    "assetType": "Blast drill",
+    "location": "Bench B-405",
+    "criticality": "A",
+    "oem": "Synthetic Industrial OEM",
+    "commissioned": "2025-11-01",
+    "maintenanceStrategy": "condition-based"
+  },
+  {
+    "assetId": "HT-331",
+    "assetType": "Autonomous haul truck",
+    "location": "Haul Road 3",
+    "criticality": "A",
+    "oem": "Synthetic Industrial OEM",
+    "commissioned": "2025-11-01",
+    "maintenanceStrategy": "condition-based"
+  },
+  {
+    "assetId": "HT-442",
+    "assetType": "Haul truck",
+    "location": "Crusher approach",
+    "criticality": "A",
+    "oem": "Synthetic Industrial OEM",
+    "commissioned": "2025-11-01",
+    "maintenanceStrategy": "condition-based"
+  },
+  {
+    "assetId": "CR-01",
+    "assetType": "Primary crusher",
+    "location": "Crusher station",
+    "criticality": "A",
+    "oem": "Synthetic Industrial OEM",
+    "commissioned": "2025-11-01",
+    "maintenanceStrategy": "condition-based"
+  },
+  {
+    "assetId": "CV-204",
+    "assetType": "Overland conveyor",
+    "location": "Crusher to coarse stockpile",
+    "criticality": "A",
+    "oem": "Synthetic Industrial OEM",
+    "commissioned": "2025-11-01",
+    "maintenanceStrategy": "condition-based"
+  },
+  {
+    "assetId": "GM-02",
+    "assetType": "Grinding mill",
+    "location": "Concentrator line 2",
+    "criticality": "A",
+    "oem": "Synthetic Industrial OEM",
+    "commissioned": "2025-11-01",
+    "maintenanceStrategy": "condition-based"
+  },
+  {
+    "assetId": "BD-03",
+    "assetType": "Balling disc",
+    "location": "Pellet plant line A",
+    "criticality": "A",
+    "oem": "Synthetic Industrial OEM",
+    "commissioned": "2025-11-01",
+    "maintenanceStrategy": "condition-based"
+  },
+  {
+    "assetId": "IF-07",
+    "assetType": "Induration fan",
+    "location": "Furnace zone 3",
+    "criticality": "A",
+    "oem": "Synthetic Industrial OEM",
+    "commissioned": "2025-11-01",
+    "maintenanceStrategy": "condition-based"
+  },
+  {
+    "assetId": "PM-112",
+    "assetType": "Process water pump",
+    "location": "Concentrator",
+    "criticality": "A",
+    "oem": "Synthetic Industrial OEM",
+    "commissioned": "2025-11-01",
+    "maintenanceStrategy": "condition-based"
+  },
+  {
+    "assetId": "ST-01",
+    "assetType": "Stacker",
+    "location": "Finished pellet yard",
+    "criticality": "A",
+    "oem": "Synthetic Industrial OEM",
+    "commissioned": "2025-11-01",
+    "maintenanceStrategy": "condition-based"
+  },
+  {
+    "assetId": "RC-02",
+    "assetType": "Reclaimer",
+    "location": "Loadout yard",
+    "criticality": "B",
+    "oem": "Synthetic Industrial OEM",
+    "commissioned": "2025-11-01",
+    "maintenanceStrategy": "condition-based"
+  }
+]

@@ -1,0 +1,57 @@
+[
+  {
+    "planId": "DB-240",
+    "blockId": "N-14",
+    "holeCount": 98,
+    "burdenM": 7.1,
+    "spacingM": 7.1,
+    "powderFactorKgPerT": 0.63,
+    "fragmentationP80mm": 103,
+    "blastWindow": "2026-06-19 10:00",
+    "aiOptimization": "reduce oversize to protect crusher tph"
+  },
+  {
+    "planId": "DB-241",
+    "blockId": "E-07",
+    "holeCount": 109,
+    "burdenM": 6.9,
+    "spacingM": 7.7,
+    "powderFactorKgPerT": 0.5,
+    "fragmentationP80mm": 159,
+    "blastWindow": "2026-06-19 10:00",
+    "aiOptimization": "reduce oversize to protect crusher tph"
+  },
+  {
+    "planId": "DB-242",
+    "blockId": "C-03",
+    "holeCount": 108,
+    "burdenM": 6.9,
+    "spacingM": 6.6,
+    "powderFactorKgPerT": 0.49,
+    "fragmentationP80mm": 157,
+    "blastWindow": "2026-06-19 10:00",
+    "aiOptimization": "reduce oversize to protect crusher tph"
+  },
+  {
+    "planId": "DB-243",
+    "blockId": "W-05",
+    "holeCount": 93,
+    "burdenM": 6.4,
+    "spacingM": 7.0,
+    "powderFactorKgPerT": 0.5,
+    "fragmentationP80mm": 164,
+    "blastWindow": "2026-06-19 10:00",
+    "aiOptimization": "reduce oversize to protect crusher tph"
+  },
+  {
+    "planId": "DB-244",
+    "blockId": "S-04",
+    "holeCount": 122,
+    "burdenM": 6.4,
+    "spacingM": 6.7,
+    "powderFactorKgPerT": 0.47,
+    "fragmentationP80mm": 125,
+    "blastWindow": "2026-06-19 10:00",
+    "aiOptimization": "reduce oversize to protect crusher tph"
+  }
+]

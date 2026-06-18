@@ -1,0 +1,54 @@
+[
+  {
+    "shipmentId": "RAIL-760",
+    "customer": "Customer A",
+    "requiredQuality": "DR Fe >=67.5, silica <=3.0",
+    "stockpile": "P1",
+    "inventoryTons": 29387,
+    "railcarsRequired": 118,
+    "railcarsAvailable": 69,
+    "loadoutStatus": "quality hold",
+    "dispatchEtaHours": 17,
+    "demurrageRiskUsd": 109258,
+    "aiRecommendation": "resequencing P2 before P4"
+  },
+  {
+    "shipmentId": "RAIL-761",
+    "customer": "Customer B",
+    "requiredQuality": "DR Fe >=67.2, silica <=3.2",
+    "stockpile": "P4",
+    "inventoryTons": 24126,
+    "railcarsRequired": 110,
+    "railcarsAvailable": 64,
+    "loadoutStatus": "quality hold",
+    "dispatchEtaHours": 16,
+    "demurrageRiskUsd": 85332,
+    "aiRecommendation": "hold until quality certificate clears"
+  },
+  {
+    "shipmentId": "RAIL-762",
+    "customer": "Customer C",
+    "requiredQuality": "standard DR lot, moisture <=8.0",
+    "stockpile": "P3",
+    "inventoryTons": 28238,
+    "railcarsRequired": 112,
+    "railcarsAvailable": 108,
+    "loadoutStatus": "sequencing",
+    "dispatchEtaHours": 14,
+    "demurrageRiskUsd": 38045,
+    "aiRecommendation": "use alternate siding"
+  },
+  {
+    "shipmentId": "RAIL-763",
+    "customer": "Customer D",
+    "requiredQuality": "low-phosphorus DR lot",
+    "stockpile": "P3",
+    "inventoryTons": 17968,
+    "railcarsRequired": 109,
+    "railcarsAvailable": 87,
+    "loadoutStatus": "sequencing",
+    "dispatchEtaHours": 6,
+    "demurrageRiskUsd": 131201,
+    "aiRecommendation": "hold until quality certificate clears"
+  }
+]

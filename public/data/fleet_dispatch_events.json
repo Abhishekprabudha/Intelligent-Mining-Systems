@@ -1,0 +1,200 @@
+[
+  {
+    "eventId": "FD-1000",
+    "truckId": "HT-300",
+    "route": "W-05 to CR-01",
+    "payloadTons": 241.4,
+    "cycleTimeMin": 26.1,
+    "queueMin": 5.3,
+    "status": "loading",
+    "etaMin": 8,
+    "dispatchRecommendation": "reroute via haul road 3"
+  },
+  {
+    "eventId": "FD-1001",
+    "truckId": "HT-301",
+    "route": "C-03 to CR-01",
+    "payloadTons": 266.2,
+    "cycleTimeMin": 20.0,
+    "queueMin": 2.2,
+    "status": "loading",
+    "etaMin": 7,
+    "dispatchRecommendation": "hold priority"
+  },
+  {
+    "eventId": "FD-1002",
+    "truckId": "HT-302",
+    "route": "W-05 to CR-01",
+    "payloadTons": 251.5,
+    "cycleTimeMin": 25.7,
+    "queueMin": 3.0,
+    "status": "hauling",
+    "etaMin": 11,
+    "dispatchRecommendation": "assign to E-07 blend support"
+  },
+  {
+    "eventId": "FD-1003",
+    "truckId": "HT-303",
+    "route": "W-05 to CR-01",
+    "payloadTons": 225.0,
+    "cycleTimeMin": 21.0,
+    "queueMin": 2.9,
+    "status": "standby",
+    "etaMin": 8,
+    "dispatchRecommendation": "reduce queue at crusher"
+  },
+  {
+    "eventId": "FD-1004",
+    "truckId": "HT-304",
+    "route": "N-14 to CR-01",
+    "payloadTons": 258.1,
+    "cycleTimeMin": 26.4,
+    "queueMin": 7.4,
+    "status": "hauling",
+    "etaMin": 4,
+    "dispatchRecommendation": "hold priority"
+  },
+  {
+    "eventId": "FD-1005",
+    "truckId": "HT-305",
+    "route": "E-07 to CR-01",
+    "payloadTons": 275.5,
+    "cycleTimeMin": 25.7,
+    "queueMin": 6.8,
+    "status": "dumping",
+    "etaMin": 16,
+    "dispatchRecommendation": "hold priority"
+  },
+  {
+    "eventId": "FD-1006",
+    "truckId": "HT-306",
+    "route": "W-05 to CR-01",
+    "payloadTons": 268.2,
+    "cycleTimeMin": 27.1,
+    "queueMin": 7.6,
+    "status": "standby",
+    "etaMin": 17,
+    "dispatchRecommendation": "reduce queue at crusher"
+  },
+  {
+    "eventId": "FD-1007",
+    "truckId": "HT-307",
+    "route": "N-14 to CR-01",
+    "payloadTons": 261.9,
+    "cycleTimeMin": 29.6,
+    "queueMin": 6.1,
+    "status": "standby",
+    "etaMin": 10,
+    "dispatchRecommendation": "hold priority"
+  },
+  {
+    "eventId": "FD-1008",
+    "truckId": "HT-308",
+    "route": "N-14 to CR-01",
+    "payloadTons": 236.0,
+    "cycleTimeMin": 26.8,
+    "queueMin": 7.0,
+    "status": "standby",
+    "etaMin": 2,
+    "dispatchRecommendation": "assign to E-07 blend support"
+  },
+  {
+    "eventId": "FD-1009",
+    "truckId": "HT-309",
+    "route": "N-14 to CR-01",
+    "payloadTons": 273.4,
+    "cycleTimeMin": 20.3,
+    "queueMin": 4.6,
+    "status": "returning",
+    "etaMin": 10,
+    "dispatchRecommendation": "reroute via haul road 3"
+  },
+  {
+    "eventId": "FD-1010",
+    "truckId": "HT-310",
+    "route": "W-05 to CR-01",
+    "payloadTons": 264.4,
+    "cycleTimeMin": 24.4,
+    "queueMin": 1.6,
+    "status": "dumping",
+    "etaMin": 15,
+    "dispatchRecommendation": "assign to E-07 blend support"
+  },
+  {
+    "eventId": "FD-1011",
+    "truckId": "HT-311",
+    "route": "C-03 to CR-01",
+    "payloadTons": 266.9,
+    "cycleTimeMin": 29.2,
+    "queueMin": 3.3,
+    "status": "returning",
+    "etaMin": 11,
+    "dispatchRecommendation": "reduce queue at crusher"
+  },
+  {
+    "eventId": "FD-1012",
+    "truckId": "HT-312",
+    "route": "N-14 to CR-01",
+    "payloadTons": 251.8,
+    "cycleTimeMin": 22.1,
+    "queueMin": 3.3,
+    "status": "returning",
+    "etaMin": 18,
+    "dispatchRecommendation": "hold priority"
+  },
+  {
+    "eventId": "FD-1013",
+    "truckId": "HT-313",
+    "route": "W-05 to CR-01",
+    "payloadTons": 248.9,
+    "cycleTimeMin": 20.4,
+    "queueMin": 3.5,
+    "status": "returning",
+    "etaMin": 16,
+    "dispatchRecommendation": "hold priority"
+  },
+  {
+    "eventId": "FD-1014",
+    "truckId": "HT-314",
+    "route": "E-07 to CR-01",
+    "payloadTons": 238.7,
+    "cycleTimeMin": 19.7,
+    "queueMin": 3.0,
+    "status": "returning",
+    "etaMin": 5,
+    "dispatchRecommendation": "hold priority"
+  },
+  {
+    "eventId": "FD-1015",
+    "truckId": "HT-315",
+    "route": "E-07 to CR-01",
+    "payloadTons": 269.7,
+    "cycleTimeMin": 22.0,
+    "queueMin": 1.1,
+    "status": "returning",
+    "etaMin": 4,
+    "dispatchRecommendation": "reroute via haul road 3"
+  },
+  {
+    "eventId": "FD-1016",
+    "truckId": "HT-316",
+    "route": "N-14 to CR-01",
+    "payloadTons": 252.3,
+    "cycleTimeMin": 19.5,
+    "queueMin": 6.8,
+    "status": "returning",
+    "etaMin": 11,
+    "dispatchRecommendation": "assign to E-07 blend support"
+  },
+  {
+    "eventId": "FD-1017",
+    "truckId": "HT-317",
+    "route": "W-05 to CR-01",
+    "payloadTons": 278.4,
+    "cycleTimeMin": 30.7,
+    "queueMin": 2.7,
+    "status": "standby",
+    "etaMin": 6,
+    "dispatchRecommendation": "reduce queue at crusher"
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "assetId": "CR-01",
+    "throughputTph": 3257.0,
+    "beltLoadPct": 69.2,
+    "bearingTempC": 65.5,
+    "motorCurrentPct": 59.2,
+    "pluggingRiskPct": 31,
+    "status": "watch",
+    "activeAlert": "none"
+  },
+  {
+    "assetId": "CV-101",
+    "throughputTph": 3364.0,
+    "beltLoadPct": 87.2,
+    "bearingTempC": 54.2,
+    "motorCurrentPct": 76.6,
+    "pluggingRiskPct": 34,
+    "status": "normal",
+    "activeAlert": "none"
+  },
+  {
+    "assetId": "CV-204",
+    "throughputTph": 3585.0,
+    "beltLoadPct": 77.4,
+    "bearingTempC": 88.2,
+    "motorCurrentPct": 94,
+    "pluggingRiskPct": 72,
+    "status": "critical",
+    "activeAlert": "bearing temperature rising"
+  },
+  {
+    "assetId": "SC-02",
+    "throughputTph": 2830.0,
+    "beltLoadPct": 77.6,
+    "bearingTempC": 60.1,
+    "motorCurrentPct": 82.4,
+    "pluggingRiskPct": 35,
+    "status": "watch",
+    "activeAlert": "none"
+  },
+  {
+    "assetId": "MAG-01",
+    "throughputTph": 2880.0,
+    "beltLoadPct": 90.2,
+    "bearingTempC": 43.4,
+    "motorCurrentPct": 62.0,
+    "pluggingRiskPct": 35,
+    "status": "normal",
+    "activeAlert": "none"
+  }
+]

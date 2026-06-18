@@ -1,0 +1,60 @@
+{
+  "planDate": "2026-06-18",
+  "shift": "B Shift",
+  "oreMovementPlanTons": 168000,
+  "oreMovementActualTons": 154600,
+  "wasteMovementPlanTons": 72000,
+  "wasteMovementActualTons": 70400,
+  "crusherFeedPlanTph": 3480,
+  "crusherFeedActualTph": 3215,
+  "activeBlocks": [
+    "N-14",
+    "E-07",
+    "C-03",
+    "W-05"
+  ],
+  "currentBlend": {
+    "N-14": 38,
+    "E-07": 26,
+    "C-03": 22,
+    "W-05": 14
+  },
+  "recommendedBlend": {
+    "N-14": 22,
+    "E-07": 38,
+    "C-03": 24,
+    "W-05": 16
+  },
+  "constraints": [
+    "silica drift from N-14",
+    "CV-204 bearing stress",
+    "wet ore moisture variability"
+  ],
+  "milestones": [
+    {
+      "time": "07:00",
+      "event": "Shift handover complete",
+      "status": "complete"
+    },
+    {
+      "time": "09:15",
+      "event": "N-14 feed increase authorized",
+      "status": "complete"
+    },
+    {
+      "time": "12:05",
+      "event": "Silica drift detected",
+      "status": "active"
+    },
+    {
+      "time": "14:30",
+      "event": "Planned blend transition",
+      "status": "upcoming"
+    },
+    {
+      "time": "15:15",
+      "event": "CV-204 maintenance window candidate",
+      "status": "recommended"
+    }
+  ]
+}

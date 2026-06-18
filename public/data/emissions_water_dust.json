@@ -1,0 +1,29 @@
+{
+  "carbonIntensityKgCO2ePerT": 37.8,
+  "waterUsageM3PerT": 0.52,
+  "dustIndex": 72,
+  "dustLimit": 80,
+  "emissionsStatus": "within permit, elevated dust watch",
+  "reclamationProgressPct": 61,
+  "openESGActions": 4,
+  "zones": [
+    {
+      "zone": "S-3 Stockpile",
+      "dustIndex": 78,
+      "windRisk": "high",
+      "recommendedAction": "water suppression + restricted movement"
+    },
+    {
+      "zone": "Crusher pocket",
+      "dustIndex": 64,
+      "windRisk": "medium",
+      "recommendedAction": "inspect fogging nozzles"
+    },
+    {
+      "zone": "Rail loadout",
+      "dustIndex": 58,
+      "windRisk": "low",
+      "recommendedAction": "continue monitoring"
+    }
+  ]
+}

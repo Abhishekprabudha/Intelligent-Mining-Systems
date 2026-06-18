@@ -1,0 +1,47 @@
+[
+  {
+    "workOrderId": "WO-8200",
+    "assetId": "CV-204",
+    "priority": "P1",
+    "status": "planned",
+    "durationMin": 45,
+    "productionImpact": "low if aligned to feed transition",
+    "aiReason": "risk-weighted maintenance window reduces value exposure"
+  },
+  {
+    "workOrderId": "WO-8201",
+    "assetId": "GM-02",
+    "priority": "P2",
+    "status": "parts staged",
+    "durationMin": 120,
+    "productionImpact": "medium",
+    "aiReason": "risk-weighted maintenance window reduces value exposure"
+  },
+  {
+    "workOrderId": "WO-8202",
+    "assetId": "IF-07",
+    "priority": "P2",
+    "status": "planned",
+    "durationMin": 90,
+    "productionImpact": "medium",
+    "aiReason": "risk-weighted maintenance window reduces value exposure"
+  },
+  {
+    "workOrderId": "WO-8203",
+    "assetId": "BD-03",
+    "priority": "P2",
+    "status": "parts staged",
+    "durationMin": 120,
+    "productionImpact": "medium",
+    "aiReason": "risk-weighted maintenance window reduces value exposure"
+  },
+  {
+    "workOrderId": "WO-8204",
+    "assetId": "PM-112",
+    "priority": "P2",
+    "status": "parts staged",
+    "durationMin": 120,
+    "productionImpact": "medium",
+    "aiReason": "risk-weighted maintenance window reduces value exposure"
+  }
+]

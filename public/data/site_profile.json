@@ -1,0 +1,24 @@
+{
+  "siteName": "Mesabi Metallics Intelligent Mine Mission Control",
+  "operator": "Mesabi Metallics / Essar Group",
+  "location": "Nashwauk, Minnesota",
+  "assetType": "Iron ore mine and DR-grade pellet plant",
+  "designCapacityMTPA": 7.0,
+  "mineLifeYears": 20,
+  "mission": "Pit-to-pellet operating brain for green steel supply",
+  "shift": "B Shift",
+  "productionDay": "Day 171 / 2026 ramp-up simulation",
+  "currency": "USD",
+  "baselineDailyPelletPlanTons": 19180,
+  "primaryProducts": [
+    "DR-grade iron ore pellets",
+    "high Fe concentrate"
+  ],
+  "northStarMetrics": [
+    "DR pellet quality",
+    "plan attainment",
+    "cost per ton",
+    "carbon intensity",
+    "safety risk"
+  ]
+}

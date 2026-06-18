@@ -1,0 +1,47 @@
+[
+  {
+    "eventId": "SE-310",
+    "zone": "S-3 Stockpile",
+    "type": "vehicle interaction risk",
+    "severity": "high",
+    "status": "open",
+    "aiRecommendation": "increase spotter coverage",
+    "createdAt": "2026-06-18T12:20:00-05:00"
+  },
+  {
+    "eventId": "SE-311",
+    "zone": "Haul Road 3",
+    "type": "wind restriction",
+    "severity": "medium",
+    "status": "closed",
+    "aiRecommendation": "geofence truck speed",
+    "createdAt": "2026-06-18T12:20:00-05:00"
+  },
+  {
+    "eventId": "SE-312",
+    "zone": "Crusher Station",
+    "type": "dust exposure watch",
+    "severity": "high",
+    "status": "closed",
+    "aiRecommendation": "verify isolation permit",
+    "createdAt": "2026-06-18T12:20:00-05:00"
+  },
+  {
+    "eventId": "SE-313",
+    "zone": "Rail Loadout",
+    "type": "slip/trip observation",
+    "severity": "low",
+    "status": "open",
+    "aiRecommendation": "deploy water suppression",
+    "createdAt": "2026-06-18T12:20:00-05:00"
+  },
+  {
+    "eventId": "SE-314",
+    "zone": "Maintenance Bay",
+    "type": "dust exposure watch",
+    "severity": "medium",
+    "status": "mitigating",
+    "aiRecommendation": "deploy water suppression",
+    "createdAt": "2026-06-18T12:20:00-05:00"
+  }
+]
